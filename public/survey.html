@@ -130,17 +130,18 @@
 
 
     </div>
-    
+  </body>
 
 
 <script type="text/javascript">
+console.log("working");
 //update submit button
 $(".submit").on("click", function(event) {
   event.preventDefault();
 
 var userInfo = {
   name: $("#userName").val().trim(),
-  photo:$("userPhoto").val().trim(),
+  photo:$("#userPhoto").val().trim(),
   scores:[
     $("#question1").val().trim(),
     $("#question2").val().trim(),
@@ -167,5 +168,5 @@ $.post("/api/friends", userInfo)
 
 
 </script>
-</body>
+
 </html>
