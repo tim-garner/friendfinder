@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -136,8 +137,9 @@
 <script type="text/javascript">
 console.log("working");
 //update submit button
-$(".submit").on("click", function(event) {
+$(".submit").on("click", function(event)  { 
   event.preventDefault();
+  console.log("updated click");
 
 var userInfo = {
   name: $("#userName").val().trim(),
@@ -158,7 +160,7 @@ var userInfo = {
 console.log("userInfo");
 
 //need to match for friends comparision
-$.post("/api/friends", userInfo)
+$.post("/api/survey", userInfo)
       		.done(function(data) {
       		
       			$("#userConnect").html(data.connectName);
