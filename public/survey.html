@@ -155,7 +155,8 @@ var userInfo = {
     $("#question10").val().trim(),
   ]
 };
-console.log("userInfo = " + Json.stringify(data));
+console.log("userInfo");
+
 //need to match for friends comparision
 $.post("/api/friends", userInfo)
       		.done(function(data) {
