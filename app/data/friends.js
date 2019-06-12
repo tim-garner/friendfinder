@@ -1,6 +1,7 @@
 console.log("working");
 
 var express = require("express");
+var path = require("path");
 
 var app = express();
 var PORT = process.env.PORT || 3000;
@@ -8,8 +9,8 @@ var PORT = process.env.PORT || 3000;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-require("./routes/apiRoutes")(app);
-require("./routes/htmlRoutes")(app);
+require("./routing/apiRoutes")(app);
+require("./routing/htmlRoutes")(app);
 
 
 
@@ -58,3 +59,37 @@ name: "Captain Planet",
 
 
 ];
+app.get("/", function(req, res) {
+    res.sendFile(path.join(__dirname, "home.html"));
+  });
+  
+  app.get("/add", function(req, res) {
+    res.sendFile(path.join(__dirname, "survey.html"));
+  });
+
+  app.get("/api/friends/:character", function(req, res) {
+    var chosen = req.params.friendsInfo;
+  
+    console.log(chosen);
+  
+    for (var i = 0; i < friendsInfo.length; i++) {
+      if (chosen === friendsInfo[i].routeName) {
+        return res.json(friendsInfo[i]);
+      }
+    }
+  
+    return res.json(false);
+  });
+  
+  // Create New Characters - takes in JSON input
+  app.post("/api/friends", function(req, res) {
+    // req.body hosts is equal to the JSON post sent from the user
+    // This works because of our body parsing middleware
+    var newFriends = req.body;
+
+    console.log(newFriends);
+
+  characters.push(newFriends);
+
+  res.json(newFriends);
+});
