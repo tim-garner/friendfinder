@@ -11,3 +11,8 @@ module.exports = function(app) {
     });
 }
 
+//need for loop to find data
+for (var i=0; friends.length;i++) {
+	 console.log(friends[i].name);
+}
+
