@@ -9,8 +9,8 @@ var PORT = process.env.PORT || 3000;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-require("./routing/apiRoutes")(app);
-require("./routing/htmlRoutes")(app);
+// require("./apiRoutes")(app);
+// require("./routing/htmlRoutes")(app);
 
 
 
@@ -57,8 +57,10 @@ name: "Captain Planet",
 }
 
 
-
 ];
+console.log(friendsInfo);
+
+
 app.get("/", function(req, res) {
     res.sendFile(path.join(__dirname, "home.html"));
   });
@@ -67,7 +69,7 @@ app.get("/", function(req, res) {
     res.sendFile(path.join(__dirname, "survey.html"));
   });
 
-  app.get("/api/friends/:character", function(req, res) {
+  app.get("/api/friends/:friends", function(req, res) {
     var chosen = req.params.friendsInfo;
   
     console.log(chosen);
@@ -93,3 +95,5 @@ app.get("/", function(req, res) {
 
   res.json(newFriends);
 });
+
+module.exports = friendsInfo;

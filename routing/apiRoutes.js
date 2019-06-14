@@ -2,7 +2,7 @@ console.log("working");
 
 var path= require("path");
 
-var friends = require("../data/friends.js");
+var friends = require("app/data/friends.js");
 
 module.exports = function(app) {
 
